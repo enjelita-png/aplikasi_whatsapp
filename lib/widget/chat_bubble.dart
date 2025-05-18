@@ -9,7 +9,7 @@ class ChatBubble extends StatelessWidget {
   final bool isEdited;
   final String? quoted;
 
-  const ChatBubble({
+  ChatBubble({
     super.key,
     required this.sender,
     required this.image,
@@ -19,6 +19,17 @@ class ChatBubble extends StatelessWidget {
     this.isEdited = false,
     this.quoted,
   });
+
+  _avatarColor(String nama) {
+    int hash = 0;
+    for (var i = 0; i < nama.length; i++) {
+      hash = nama.codeUnitAt(i) + ((hash << 5) - hash);
+    }
+    int r = (hash >> 16) & 0xFF;
+    int g = (hash >> 8) & 0xFF;
+    int b = hash & 0xFF;
+    return Color.fromRGBO(r, g, b, 1.0);
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -31,9 +42,17 @@ class ChatBubble extends StatelessWidget {
         children: [
           CircleAvatar(
             radius: 15,
-            backgroundColor: Colors.grey[900],
-            backgroundImage:
-                image != null ? AssetImage(image!) : AssetImage(''),
+            backgroundColor: _avatarColor(sender),
+            backgroundImage: image != null ? AssetImage(image!) : null,
+            child: image == null
+                ? Text(
+                    sender.substring(0, 1).toUpperCase(),
+                    style: const TextStyle(
+                      color: Colors.white,
+                      fontWeight: FontWeight.bold,
+                    ),
+                  )
+                : null,
           ),
           SizedBox(width: 10),
           Column(
@@ -42,7 +61,7 @@ class ChatBubble extends StatelessWidget {
               Container(
                 padding: const EdgeInsets.all(10),
                 decoration: BoxDecoration(
-                  color: Colors.grey[900],
+                  color: Theme.of(context).scaffoldBackgroundColor,
                   borderRadius: BorderRadius.circular(12),
                 ),
                 child: Column(

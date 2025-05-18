@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 
 class ChatTile extends StatelessWidget {
   final String name;
+  final String? profileImage;
   final String message;
   final String time;
   final bool isGroup;
@@ -10,6 +11,7 @@ class ChatTile extends StatelessWidget {
   const ChatTile({
     super.key,
     required this.name,
+    this.profileImage,
     required this.message,
     required this.time,
     required this.OnTap,
@@ -24,9 +26,12 @@ class ChatTile extends StatelessWidget {
         leading: CircleAvatar(
           radius: 24,
           backgroundColor: isGroup ? Colors.green : Colors.grey[700],
-          child: isGroup
-              ? const Icon(Icons.group, color: Colors.white)
-              : const Icon(Icons.person, color: Colors.white),
+          backgroundImage: AssetImage(profileImage!),
+          child: profileImage == null
+              ? isGroup
+                  ? const Icon(Icons.group, color: Colors.white)
+                  : const Icon(Icons.person, color: Colors.white)
+              : null,
         ),
         title: Text(name,
             style: const TextStyle(fontWeight: FontWeight.bold, fontSize: 16)),

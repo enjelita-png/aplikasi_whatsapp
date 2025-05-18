@@ -21,6 +21,7 @@ class ChatScreen extends StatelessWidget {
     },
     {
       "sender": "Crespo",
+      "image": "crespo.jpg",
       "message": "Saya jg bu ada matkul",
       "time": "13.36",
     },
@@ -46,11 +47,13 @@ class ChatScreen extends StatelessWidget {
     {
       "sender": "~ San Ti",
       "message": "15.00 klo bgitu",
+      "image": "santi.jpg",
       "time": "13.47",
       "color": Colors.green,
     },
     {
       "sender": "San Ti",
+      "image": "santi.jpg",
       "message":
           "Yg bisa masuk d jam 9.20, silahkan.\nYg tdk bs, masuk d jam 15.00",
       "time": "13.50"
@@ -75,10 +78,12 @@ class ChatScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
         appBar: CustomGlassAppBar(
-          leading: IconButton(
-            icon: const Icon(Icons.arrow_back, color: Colors.white),
-            onPressed: () => Navigator.pop(context),
-          ),
+          leading: Navigator.of(context).canPop()
+              ? IconButton(
+                  icon: const Icon(Icons.arrow_back),
+                  onPressed: () => Navigator.of(context).pop(),
+                )
+              : Container(),
           title: Expanded(
             child: Row(
               children: [
@@ -113,8 +118,9 @@ class ChatScreen extends StatelessWidget {
             Container(
               decoration: BoxDecoration(
                 shape: BoxShape.rectangle,
+                color: Colors.grey.shade200,
                 image: DecorationImage(
-                  opacity: 0.5,
+                  // opacity: 0.5,
                   image: AssetImage('wallpaper.png'),
                   fit: BoxFit.cover,
                 ),
@@ -129,7 +135,7 @@ class ChatScreen extends StatelessWidget {
                     itemBuilder: (context, index) {
                       final msg = messages[index];
                       return ChatBubble(
-                        image: msg["sender"] == "Jefrii" ? "jefrii.jpg" : null,
+                        image: msg["image"],
                         sender: msg["sender"] ?? "",
                         message: msg["message"] ?? "",
                         time: msg["time"] ?? "",

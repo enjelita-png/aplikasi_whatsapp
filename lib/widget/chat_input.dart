@@ -37,20 +37,23 @@ class ChatInputField extends StatelessWidget {
           padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 0),
           child: Row(
             children: [
-              const Icon(Icons.add, color: Colors.white70),
+              Icon(Icons.add, color: Theme.of(context).iconTheme.color),
               const SizedBox(width: 8),
               Expanded(
                 child: TextField(
                   decoration: InputDecoration(
                     suffix: Icon(
                       Icons.sticky_note_2,
-                      color: Colors.white,
+                      color: Theme.of(context).iconTheme.color,
                     ),
-                    suffixIconColor: Colors.white,
-                    hintStyle: const TextStyle(color: Colors.white70),
+                    suffixIconColor: Theme.of(context).iconTheme.color,
+                    hintStyle:
+                        TextStyle(color: Theme.of(context).iconTheme.color),
                     hintText: "Ketik pesan",
                     filled: true,
-                    fillColor: Colors.grey[800],
+                    fillColor: Theme.of(context).brightness == Brightness.dark
+                        ? Colors.grey.shade800
+                        : Colors.white,
                     contentPadding: const EdgeInsets.symmetric(horizontal: 16),
                     border: OutlineInputBorder(
                       borderRadius: BorderRadius.circular(30),
@@ -60,9 +63,9 @@ class ChatInputField extends StatelessWidget {
                 ),
               ),
               const SizedBox(width: 8),
-              const Icon(Icons.camera_alt, color: Colors.white70),
-              const SizedBox(width: 8),
-              const Icon(Icons.mic, color: Colors.white70),
+              Icon(Icons.camera_alt, color: Theme.of(context).iconTheme.color),
+              SizedBox(width: 8),
+              Icon(Icons.mic, color: Theme.of(context).iconTheme.color),
             ],
           ),
         ),
