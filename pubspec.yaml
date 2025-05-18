@@ -1,0 +1,22 @@
+name: aplikasi_whatsapp
+description: "A new Flutter project."
+publish_to: 'none'
+version: 0.1.0
+
+environment:
+  sdk: '>=3.4.0 <4.0.0'
+
+dependencies:
+  flutter:
+    sdk: flutter
+  blur: ^3.0.0
+  glassmorphism: ^3.0.0
+  cupertino_icons: ^1.0.0
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+  # flutter_lints: ^3.0.0
+
+flutter:
+  uses-material-design: true
