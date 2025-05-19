@@ -26,7 +26,8 @@ class ChatTile extends StatelessWidget {
         leading: CircleAvatar(
           radius: 24,
           backgroundColor: isGroup ? Colors.green : Colors.grey[700],
-          backgroundImage: AssetImage(profileImage!),
+          backgroundImage:
+              profileImage != null ? AssetImage(profileImage!) : null,
           child: profileImage == null
               ? isGroup
                   ? const Icon(Icons.group, color: Colors.white)

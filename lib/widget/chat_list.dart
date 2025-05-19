@@ -14,7 +14,7 @@ class ChatList extends StatelessWidget {
         final chat = chats[index];
         return ChatTile(
           OnTap: () {},
-          profileImage: chat["profileImage"] ?? "",
+          profileImage: chat["profileImage"],
           name: chat["name"] ?? "",
           message: chat["message"] ?? "",
           time: chat["time"] ?? "",
