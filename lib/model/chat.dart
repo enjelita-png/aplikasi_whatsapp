@@ -28,11 +28,6 @@ class Chat {
       "name": "Anastasya",
       "message": "Ma’pai.?",
       "time": "30/03/25",
-    },
-    {
-      "name": "Anastasya",
-      "message": "Ma’pai.?",
-      "time": "30/03/25",
       "profileImage": "anastasya.jpg"
     },
     {
